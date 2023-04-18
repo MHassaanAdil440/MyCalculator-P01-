@@ -26,7 +26,7 @@ export default function App() {
   return (
     <View style = {styles.container}>
       <View style={{flex:0.05,backgroundColor:'#FDE2F3'}}>
-        <Text>Testing</Text>
+        {/* <Text>Testing</Text>s */}
       </View>
       <View style = {{flex:0.4, }}>
         <Text style={styles.titleText}>MyCalculator</Text>
