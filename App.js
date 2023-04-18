@@ -1,3 +1,4 @@
+import React, {useRef} from "react";
 import { StatusBar } from "expo-status-bar";
 import { useState, useSyncExternalStore } from "react";
 import {
@@ -6,6 +7,8 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback
 } from "react-native";
 
 const CustomButton = ({ onPress, title, style }) => {
@@ -24,6 +27,9 @@ export default function App() {
   const [secondNumber, setSecondNumber] = useState(0);
   const [result, setResult] = useState(0);
   return (
+    // <TouchableWithoutFeedback onPress={()=>textInputRef.current.blur()}>
+
+   
     <View style = {styles.container}>
       <View style={{flex:0.05,backgroundColor:'#FDE2F3'}}>
         {/* <Text>Testing</Text>s */}
@@ -34,7 +40,8 @@ export default function App() {
           placeholder="1st Number"
           placeholderTextColor="#2A2F4F"
           onChangeText={setFirstNumber}
-          keyboardType="numeric"
+          // keyboardType={()=>{Keyboard.dismiss()}}
+          // showSoftInputOnFocus='false'
           style={styles.inputText}
         />
 
@@ -42,7 +49,8 @@ export default function App() {
           placeholder="1st Number"
           placeholderTextColor="#2A2F4F"
           onChangeText={setSecondNumber}
-          keyboardType="numeric"
+          // onFocus={()=>{Keyboard.dismiss()}}
+          // showSoftInputOnFocus='false'
           style={styles.inputText}
         />
         <Text style={styles.result}>Result:</Text>
@@ -87,6 +95,7 @@ export default function App() {
       {/*  */}
       <StatusBar style="auto" />
     </View>
+    // </TouchableWithoutFeedback>
   );
 }
 
