@@ -1,10 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState, useSyncExternalStore } from 'react';
-import { StyleSheet, Text, TextInput, View, ViewBase } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+
+const CustomButton = ({onPress, title, style}) =>{
+  return(
+    <TouchableOpacity onPress={onPress} style={style}>
+      <Text>{title}</Text>
+    </TouchableOpacity>
+  )
+}
 
 export default function App() {
   const [firstNumber, setFirstNumber] = useState(0);
   const [secondNumber, setSecondNumber] = useState(0); 
+  const [result, setResult] = useState(0);
   return (
     <View>
       <View>
