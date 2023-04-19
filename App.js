@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useState, useSyncExternalStore } from "react";
 import {
@@ -8,7 +8,7 @@ import {
   View,
   TouchableOpacity,
   Keyboard,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 
 const CustomButton = ({ onPress, title, style }) => {
@@ -19,7 +19,7 @@ const CustomButton = ({ onPress, title, style }) => {
   );
 };
 const handlePress = () => {
-  console.log('Button pressed');
+  console.log("Button pressed");
 };
 
 export default function App() {
@@ -29,12 +29,11 @@ export default function App() {
   return (
     // <TouchableWithoutFeedback onPress={()=>textInputRef.current.blur()}>
 
-   
-    <View style = {styles.container}>
-      <View style={{flex:0.05,backgroundColor:'#FDE2F3'}}>
+    <View style={styles.container}>
+      <View style={{ flex: 0.05, backgroundColor: "#FDE2F3" }}>
         {/* <Text>Testing</Text>s */}
       </View>
-      <View style = {{flex:0.4, }}>
+      <View style={{ flex: 0.6 }}>
         <Text style={styles.titleText}>MyCalculator</Text>
         <TextInput
           placeholder="1st Number"
@@ -55,43 +54,31 @@ export default function App() {
         />
         <Text style={styles.result}>Result:</Text>
         <Text style={styles.textContainer}>Result</Text>
+
+        <View style={styles.buttonRow}>
+          <CustomButton
+            onPress={handlePress}
+            title="+"
+            style={styles.customButtonsOperators}
+          />
+          <CustomButton
+            onPress={handlePress}
+            title="-"
+            style={styles.customButtonsOperators}
+          />
+          <CustomButton
+            onPress={handlePress}
+            title="/"
+            style={styles.customButtonsOperators}
+          />
+          <CustomButton
+            onPress={handlePress}
+            title="*"
+            style={styles.customButtonsOperators}
+          />
+        </View>
       </View>
-      <View style = {{flex:0.55}}>
-        <View style = {styles.buttonRow}>
 
-        <CustomButton onPress={handlePress} title='+' style={styles.customButtonsOperators}/>
-        <CustomButton onPress={handlePress} title='-' style={styles.customButtonsOperators}/>
-        <CustomButton onPress={handlePress} title='/' style={styles.customButtonsOperators}/>
-        <CustomButton onPress={handlePress} title='*' style={styles.customButtonsOperators}/>
-        </View>
-
-        <View style = {styles.buttonRow}>
-
-        <CustomButton onPress={handlePress} title='1' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='2' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='3' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='4' style={styles.customButtonsNumbers}/>
-        </View>
-
-        <View style = {styles.buttonRow}>
-
-        <CustomButton onPress={handlePress} title='5' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='6' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='7' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='8' style={styles.customButtonsNumbers}/>
-        </View>
-
-        <View style = {styles.buttonRow}>
-
-        <CustomButton onPress={handlePress} title='9' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='0' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='.' style={styles.customButtonsNumbers}/>
-        <CustomButton onPress={handlePress} title='=' style={styles.customButtonsNumbers}/>
-        </View>
-
-        
-
-      </View>
       {/*  */}
       <StatusBar style="auto" />
     </View>
@@ -102,9 +89,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
+    backgroundColor: "#fff",
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
   },
   titleText: {
     fontSize: 30,
@@ -144,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlignVertical: "center",
   },
-  customButtonsNumbers:{
+  customButtonsNumbers: {
     height: 80,
     width: 70,
     margin: 8,
@@ -153,9 +140,8 @@ const styles = StyleSheet.create({
     borderColor: "#FDF4F5",
     backgroundColor: "#FDF4F5",
     borderRadius: 20,
-    
   },
-  customButtonsOperators:{
+  customButtonsOperators: {
     height: 80,
     width: 70,
     margin: 8,
@@ -164,20 +150,19 @@ const styles = StyleSheet.create({
     borderColor: "#FDE2F3",
     backgroundColor: "#FDE2F3",
     borderRadius: 20,
-    
   },
-   buttonText: {
-    color: 'black',
+  buttonText: {
+    color: "black",
     fontSize: 20,
     // paddingVertical:'5',
-    textAlign: 'center', // center the text
-    fontWeight: 'bold', // make the text bold
+    textAlign: "center", // center the text
+    fontWeight: "bold", // make the text bold
   },
   buttonRow: {
-    flexDirection: 'row', // display buttons horizontally
-    flexWrap: 'wrap', // wrap buttons to next line if necessary
-    justifyContent: 'space-between', // distribute buttons evenly across row
-    width: '100%', // ensure the row takes up the full width of the container
+    flexDirection: "row", // display buttons horizontally
+    flexWrap: "wrap", // wrap buttons to next line if necessary
+    justifyContent: "space-between", // distribute buttons evenly across row
+    width: "100%", // ensure the row takes up the full width of the container
     marginBottom: 10, // add some margin between rows
   },
 });
