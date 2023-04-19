@@ -18,19 +18,45 @@ const CustomButton = ({ onPress, title, style }) => {
     </TouchableOpacity>
   );
 };
-const handlePress = () => {
-  console.log("Button pressed");
-};
+
 
 export default function App() {
   const [firstNumber, setFirstNumber] = useState(0);
   const [secondNumber, setSecondNumber] = useState(0);
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState();
+
+  const handlePressPlus = () => {
+    const r = parseInt(firstNumber) + parseInt(secondNumber);
+    setResult(r);
+  };
+  
+  const handlePressMinus = () => {
+    let r = firstNumber - secondNumber;
+    setResult(r);
+  };
+  
+  const handlePressMultiply = () => {
+    let r = firstNumber * secondNumber;
+    setResult(r);
+  };
+  
+  const handlePressDivide = () => {
+    let r = firstNumber / secondNumber;
+    setResult(r);
+  };
+
+  const handleInputChangeFirst = (text) => {
+    setFirstNumber(text);
+  };
+
+  const handleInputChangeSecond = (text) => {
+    setSecondNumber(text);
+  };
   return (
     // <TouchableWithoutFeedback onPress={()=>textInputRef.current.blur()}>
 
     <View style={styles.container}>
-      <View style={{ flex: 0.05, backgroundColor: "#FDE2F3" }}>
+      <View style={{ flex: 0.05, backgroundColor: "#F9D949" }}>
         {/* <Text>Testing</Text>s */}
       </View>
       <View style={{ flex: 0.6 }}>
@@ -38,8 +64,8 @@ export default function App() {
         <TextInput
           placeholder="1st Number"
           placeholderTextColor="#2A2F4F"
-          onChangeText={setFirstNumber}
-          // keyboardType={()=>{Keyboard.dismiss()}}
+          keyboardType='numeric'
+          onChangeText={handleInputChangeFirst}
           // showSoftInputOnFocus='false'
           style={styles.inputText}
         />
@@ -47,32 +73,33 @@ export default function App() {
         <TextInput
           placeholder="1st Number"
           placeholderTextColor="#2A2F4F"
-          onChangeText={setSecondNumber}
+          keyboardType='numeric'
+          onChangeText={handleInputChangeSecond}
           // onFocus={()=>{Keyboard.dismiss()}}
           // showSoftInputOnFocus='false'
           style={styles.inputText}
         />
         <Text style={styles.result}>Result:</Text>
-        <Text style={styles.textContainer}>Result</Text>
+        <Text style={styles.textContainer}>{result}</Text>
 
         <View style={styles.buttonRow}>
           <CustomButton
-            onPress={handlePress}
+            onPress={handlePressPlus}
             title="+"
             style={styles.customButtonsOperators}
           />
           <CustomButton
-            onPress={handlePress}
+            onPress={handlePressMinus}
             title="-"
             style={styles.customButtonsOperators}
           />
           <CustomButton
-            onPress={handlePress}
+            onPress={handlePressDivide}
             title="/"
             style={styles.customButtonsOperators}
           />
           <CustomButton
-            onPress={handlePress}
+            onPress={handlePressMultiply}
             title="*"
             style={styles.customButtonsOperators}
           />
@@ -97,13 +124,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#917FB3",
+    color: "#FFD93D",
   },
   result: {
     fontSize: 15,
     fontWeight: "bold",
     // textAlign:'center',
-    color: "#917FB3",
+    color: "#FFD93D",
     marginLeft: 20,
   },
   inputText: {
@@ -111,8 +138,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    borderColor: "#FEF8F8",
-    backgroundColor: "#FEF8F8",
+    borderColor: "#F3E99F",
+    backgroundColor: "#F3E99F",
     borderRadius: 20,
     textAlign: "center",
     fontWeight: "bold",
@@ -123,32 +150,23 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    borderColor: "#FEF8F8",
-    backgroundColor: "#FEF8F8",
+    borderColor: "#F3E99F",
+    backgroundColor: "#F3E99F",
     borderRadius: 20,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
     textAlignVertical: "center",
   },
-  customButtonsNumbers: {
-    height: 80,
-    width: 70,
-    margin: 8,
-    borderWidth: 1,
-    padding: 10,
-    borderColor: "#FDF4F5",
-    backgroundColor: "#FDF4F5",
-    borderRadius: 20,
-  },
+
   customButtonsOperators: {
     height: 80,
     width: 70,
     margin: 8,
     borderWidth: 1,
     padding: 10,
-    borderColor: "#FDE2F3",
-    backgroundColor: "#FDE2F3",
+    borderColor: "#F9D949",
+    backgroundColor: "#F9D949",
     borderRadius: 20,
   },
   buttonText: {
