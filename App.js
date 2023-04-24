@@ -41,7 +41,7 @@ export default function App() {
           placeholderTextColor="#2A2F4F"
           onChangeText={setFirstNumber}
           // keyboardType={()=>{Keyboard.dismiss()}}
-          // showSoftInputOnFocus='false'
+          showSoftInputOnFocus={false}
           style={styles.inputText}
         />
 
@@ -50,7 +50,7 @@ export default function App() {
           placeholderTextColor="#2A2F4F"
           onChangeText={setSecondNumber}
           // onFocus={()=>{Keyboard.dismiss()}}
-          // showSoftInputOnFocus='false'
+          showSoftInputOnFocus={false}
           style={styles.inputText}
         />
         <Text style={styles.result}>Result:</Text>
